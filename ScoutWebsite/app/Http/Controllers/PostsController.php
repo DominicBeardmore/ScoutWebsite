@@ -38,7 +38,7 @@ class PostsController extends Controller
             ];
         }
 
-        return( json_encode($posts) );
+        return response()->json($posts);
     }
 
     /**
