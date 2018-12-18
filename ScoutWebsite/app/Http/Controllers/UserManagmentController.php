@@ -20,7 +20,7 @@ class UserManagmentController extends Controller
 
         $users = User::where('authorized', 0)->get();
 
-        return $users;
+        return view('adminPages.authorise', ['users' => $users ]);
     }
 
     /**
