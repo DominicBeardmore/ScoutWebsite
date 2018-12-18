@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+// use Auth;
+use Illuminate\Support\Facades\Auth;
 class UserManagmentController extends Controller
 {
+
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +17,12 @@ class UserManagmentController extends Controller
      */
     public function index()
     {
+        //gets all unauthorized users
+        $this->authorize('update', User::class);
 
+        $users = User::where('authorized', 0)->get();
+
+        return $users;
     }
 
     /**
@@ -47,10 +56,14 @@ class UserManagmentController extends Controller
     public function update(Request $request, $id)
     {
         // Authorizes new users
-        $user = User::where('id', $id)->find(1);
-        $user->authorized = 1;
-        $user->save();
-        return $user->name;
+        $this->authorize('update');
+
+        $updateUser = User::where('id', $id)->find(1);
+        $updateUser->authorized = 1;
+        $updateUser->save();
+
+        return $updateUser->name;
+
     }
 
     /**
