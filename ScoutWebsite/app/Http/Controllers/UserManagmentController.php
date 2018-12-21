@@ -15,9 +15,10 @@ class UserManagmentController extends Controller
      */
     public function index()
     {
-        //gets all unauthorized users
+        //Super Admin only
         $this->authorize('update', User::class);
 
+        //gets all unauthorized users
         $users = User::where('authorized', 0)->get();
 
         return view('adminPages.authorise', ['users' => $users ]);
@@ -53,10 +54,11 @@ class UserManagmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // Authorizes new users
-        $this->authorize('update');
+        //SuperAdmin only
+        $this->authorize('update', User::class);
 
-        $updateUser = User::where('id', $id)->find(1);
+        //Authorizes users
+        $updateUser = User::where('id', $id)->first();
         $updateUser->authorized = 1;
         $updateUser->save();
 

@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,14 +9,13 @@
     <title>Document</title>
 </head>
 <body>
-    <table>
-        <th>Users</th><th>Status</th>
-        @foreach ($users as $user)
-            <tr>
-                <td>{{$user->name}}</td><td>{{$user->authorized}}</td>
-            </tr>
-        @endforeach
-    </table>
+    @foreach ($users as $user)
+    <form method='POST' action='{{ route('authorize.update', [$user->id] )}}'>
+        @csrf
+        @method('PUT')
+            <input type="submit" value="Auth" name="id"/>
+    </form>
+    @endforeach
 </body>
 </html>
 
