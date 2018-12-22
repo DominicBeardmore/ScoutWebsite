@@ -23,4 +23,9 @@ class SuperAdminPolicy
     {
         return $user->super_admin;
     }
+
+    public function authorized(User $user)
+    {
+        return $user->authorized;
+    }
 }
