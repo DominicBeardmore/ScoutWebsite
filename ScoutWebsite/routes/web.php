@@ -11,12 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/home', function () {
+    return view('post');
+})->middleware([ 'auth','isAuthorized' ]);
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('posts', 'PostsController')->middleware([ 'auth','isAuthorized' ]);
 Route::Resource('authorize', 'UserManagmentController')->middleware([ 'auth','isAuthorized' ]);
