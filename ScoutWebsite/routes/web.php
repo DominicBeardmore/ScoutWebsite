@@ -11,12 +11,13 @@
 |
 */
 
-Route::get('/home', function () {
-    return view('post');
-})->middleware([ 'auth','isAuthorized' ]);
+//NEED TO BE LOGGED IN AND AUTHORIZED
+Route::group(['middleware' => ['auth','isAuthorized']], function () {
+    Route::get('/home', 'PostsController@index');
+    Route::resource('posts', 'PostsController');
+    Route::Resource('authorize', 'UserManagmentController');
+});
+
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Auth::routes();
-
-Route::resource('posts', 'PostsController')->middleware([ 'auth','isAuthorized' ]);
-Route::Resource('authorize', 'UserManagmentController')->middleware([ 'auth','isAuthorized' ]);

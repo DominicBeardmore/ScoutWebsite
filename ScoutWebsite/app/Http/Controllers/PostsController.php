@@ -34,11 +34,12 @@ class PostsController extends Controller
                 "post_id" => $post->post_id,
                 "post_title" => $post->post_title,
                 "post_content" => $post->post_content,
-                "post_images" => $images
+                "post_images" => $images,
+                "post_date" => $post->created_at
             ];
         }
 
-        return response()->json($posts);
+        return view('post', ['posts' => $posts]);
     }
 
     /**
