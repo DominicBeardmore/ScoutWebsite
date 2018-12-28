@@ -18,7 +18,7 @@
 
             @if (Auth::check() && Auth::user()->can('authorized'))
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Timetable</a>
+                    <a class="nav-link" href="/timeline">Timetable</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contact</a>

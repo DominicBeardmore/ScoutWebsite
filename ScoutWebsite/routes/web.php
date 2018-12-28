@@ -16,6 +16,7 @@ Route::group(['middleware' => ['auth','isAuthorized']], function () {
     Route::get('/home', 'PostsController@index');
     Route::resource('posts', 'PostsController');
     Route::Resource('authorize', 'UserManagmentController');
+    Route::resource('/timeline', 'EventsController');
 });
 
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
