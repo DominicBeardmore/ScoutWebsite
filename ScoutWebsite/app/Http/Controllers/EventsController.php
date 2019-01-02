@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Event;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\StoreEventRequest;
 class EventsController extends Controller
 {
     /**
@@ -35,9 +35,23 @@ class EventsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreEventRequest $request)
     {
-        //
+
+        $request = $request->all();
+        $event = new Event;
+
+        $event->event_title = $request['eventTitle'];
+        $event->event_description = $request['eventDescription'];
+        $event->event_location = $request['eventLocation'];
+        $event->event_date = \Carbon\Carbon::parse($request['eventDate']);
+        $event->event_start_time = $request['eventStart'];
+        $event->event_finish_time = $request['eventEnd'];
+
+        $event->save();
+
+        return back();
+
     }
 
     /**
