@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Posts;
 use App\Images;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PostsController extends Controller
 {
@@ -23,10 +24,13 @@ class PostsController extends Controller
             $images = [];
             $getImages = Images::where('post_id', $post->post_id)->get();
             foreach ($getImages as $key => $image) {
+                $tempUrl = Storage::temporaryUrl(
+                    $image->image_path, now()->addMinutes(5)
+                );
             $images[] = [
                 "image_id" => $image->image_id,
                 "post_id" => $image->post_id,
-                "image_path" => $image->image_path
+                "image_path" => $tempUrl
                 ];
             }
 

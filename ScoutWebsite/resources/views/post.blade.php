@@ -10,7 +10,7 @@ What we've done recently
 @foreach ($posts as $post)
     <!-- Blog Post -->
     <div class="card mb-4">
-        <img class="card-img-top" src="{{$post['post_images'][0]['image_path']}}" alt="Card image cap">
+        <img class="card-img-top" src="{!!$post['post_images'][0]['image_path']!!}" alt="NO IMAGE">
         <div class="card-body">
             <h2 class="card-title">{{$post['post_title']}}</h2>
             <p class="card-text">{{$post['post_content']}}</p>
