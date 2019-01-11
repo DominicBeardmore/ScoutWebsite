@@ -19,6 +19,7 @@ Route::group(['middleware' => ['auth','isAuthorized']], function () {
     Route::resource('/timeline', 'EventsController');
     // TODO PROECT THIS ROUTE
     Route::view('edit/timeline', 'adminPages.editTimeline');
+    Route::view('edit/posts', 'adminPages.editPost');
 });
 
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
