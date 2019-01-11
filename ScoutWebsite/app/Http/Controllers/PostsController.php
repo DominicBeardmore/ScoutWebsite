@@ -64,7 +64,24 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request = $request->all();
+
+        $imagesToStore = [];
+        $imagesModel = [];
+        $post = new Posts;
+
+        $post->post_title = $request['postTitle'];
+        $post->post_content = $request['postDescription'];
+
+        $post->save();
+
+        foreach ($request['postImage'] as $key => $image) {
+            $imagesToStore[$key] = Storage::putFile('image', $image);
+            $imagesModel[$key] = new Images;
+            $imagesModel[$key]->image_path = Storage::putFile('image', $image);
+            $imagesModel[$key]->post_id = $post->id;
+            $imagesModel[$key]->save();
+        }
     }
 
     /**
