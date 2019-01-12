@@ -7,21 +7,18 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-            <a class="nav-link" href="#">Home
+            <li class="nav-item">
+            <a class="nav-link" href="posts">Home
                 <span class="sr-only">(current)</span>
             </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
+                <a class="nav-link" href="about">About</a>
             </li>
 
             @if (Auth::check() && Auth::user()->can('authorized'))
                 <li class="nav-item">
                     <a class="nav-link" href="/timeline">Timetable</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('logout') }}"> Logout </a>
