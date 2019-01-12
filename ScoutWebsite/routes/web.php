@@ -16,12 +16,13 @@ Route::group(['middleware' => ['auth','isAuthorized']], function () {
     Route::get('/home', 'PostsController@index');
     Route::resource('posts', 'PostsController');
     Route::resource('authorize', 'UserManagmentController');
-    Route::resource('/timeline', 'EventsController');
+    Route::resource('timeline', 'EventsController');
     // TODO PROECT THIS ROUTE
     Route::view('edit/timeline', 'adminPages.editTimeline');
     Route::view('edit/posts', 'adminPages.editPost');
 });
 
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
+Route::view('/about', 'about');
 
 Auth::routes();
