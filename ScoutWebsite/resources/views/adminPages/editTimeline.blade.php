@@ -1,11 +1,3 @@
-@extends('layouts.base')
-
-@section('pageTitle')
-Edit timeline
-@endsection
-
-@section('content')
-
 <div class="container">
     <div class="row">
         <button class="btn btn-success" data-toggle="modal" data-target="#exampleModalLong">
@@ -32,5 +24,4 @@ Edit timeline
     </div>
     @endforeach --}}
 
-@endsection
 @include('adminPages.modalForms.addToTimeline')
