@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Event;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreEventRequest;
+
 class EventsController extends Controller
 {
     /**
@@ -94,8 +95,15 @@ class EventsController extends Controller
      * @param  \App\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Event $event)
+    public function destroy(Request $event)
     {
-        //
+        $request = $event->all();
+
+        $id = $request['eventID'];
+
+        Event::destroy($id);
+
+        return redirect('timeline')->with('status', 'Event deleted');
+
     }
 }

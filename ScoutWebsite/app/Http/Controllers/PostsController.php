@@ -6,6 +6,7 @@ use App\Posts;
 use App\Images;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\User;
 
 class PostsController extends Controller
 {
@@ -64,6 +65,8 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('update', User::class);
+
         $request = $request->all();
 
         $imagesToStore = [];
@@ -82,6 +85,8 @@ class PostsController extends Controller
             $imagesModel[$key]->post_id = $post->id;
             $imagesModel[$key]->save();
         }
+
+        return redirect('home')->with('status', 'Post Created');
     }
 
     /**
@@ -124,8 +129,15 @@ class PostsController extends Controller
      * @param  \App\Posts  $posts
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Posts $posts)
+    public function destroy(Request $post_id)
     {
-        //
+        $this->authorize('update', User::class);
+
+        $request = $post_id->all();
+        $id = $request['deleteID'];
+
+        Posts::destroy($id);
+
+        return redirect('home')->with('status', 'Post deleted');
     }
 }
