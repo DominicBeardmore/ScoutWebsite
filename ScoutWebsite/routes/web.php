@@ -22,4 +22,5 @@ Route::group(['middleware' => ['auth','isAuthorized']], function () {
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::view('/about', 'about');
 
+Route::view('splash', 'splashscreen');
 Auth::routes();

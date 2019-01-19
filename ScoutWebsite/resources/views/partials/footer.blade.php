@@ -1,7 +1,3 @@
-<!-- Footer -->
-<footer class="py-5 bg-dark">
-    <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
-    </div>
-    <!-- /.container -->
-</footer>
+<div class="footer fixed-bottom border-top bg-dark p-3">
+    <p class="m-0 text-center text-white">Copyright &copy; 2nd Southwark 2019</p>
+</div>
