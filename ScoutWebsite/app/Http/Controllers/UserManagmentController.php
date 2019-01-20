@@ -18,8 +18,8 @@ class UserManagmentController extends Controller
         //Super Admin only
         $this->authorize('update', User::class);
 
-        //gets all unauthorized users
-        $users = User::where('authorized', 0)->get();
+        //gets all users
+        $users = User::all();
 
         return view('adminPages.authorise', ['users' => $users ]);
     }
@@ -52,18 +52,35 @@ class UserManagmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         //SuperAdmin only
         $this->authorize('update', User::class);
 
-        //Authorizes users
+        $request = $request->all();
+        $split = explode(':', $request['id']);
+        $action = $split[0];
+        $id = $split[1];
+
         $updateUser = User::where('id', $id)->first();
-        $updateUser->authorized = 1;
+        switch ($action) {
+            case 'makeAuth':
+                $updateUser->authorized = 1;
+                break;
+            case 'revokeAuth':
+                $updateUser->authorized = 0;
+                break;
+            case 'makeSuper':
+                $updateUser->super_admin = 1;
+                break;
+            case 'revokeSuper':
+                $updateUser->super_admin = 0;
+                break;
+        }
+
+        //Authorizes users
         $updateUser->save();
-
-        return $updateUser->name;
-
+        return redirect('authorize')->with('status', 'User\'s privileges updated!');
     }
 
     /**
