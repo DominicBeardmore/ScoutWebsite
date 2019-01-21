@@ -11,17 +11,16 @@
 |
 */
 
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
+Route::view('/about', 'about');
+Route::view('home', 'splashscreen');
+Route::view('403', 'errorPage');
+Auth::routes();
+
 //NEED TO BE LOGGED IN AND AUTHORIZED
 Route::group(['middleware' => ['auth','isAuthorized']], function () {
-    Route::get('/home', 'PostsController@index');
     Route::resource('posts', 'PostsController');
     Route::resource('authorize', 'UserManagmentController');
     Route::resource('timeline', 'EventsController');
     Route::get('gallery/{id}', 'PostsController@show');
 });
-
-Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
-Route::view('/about', 'about');
-
-Route::view('splash', 'splashscreen');
-Auth::routes();

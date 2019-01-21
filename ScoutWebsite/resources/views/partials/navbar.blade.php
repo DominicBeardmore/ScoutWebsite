@@ -8,20 +8,17 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-            <a class="nav-link" href="posts">Home
+            <a class="nav-link" href="home">Home
                 <span class="sr-only">(current)</span>
             </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="about">About</a>
             </li>
-
-            @if (Auth::check() && Auth::user()->can('authorized'))
+            @if (Auth::check())
+                @if (Auth::user()->can('authorized'))
                 <li class="nav-item">
                     <a class="nav-link" href="/timeline">Timetable</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('logout') }}"> Logout </a>
                 </li>
 
                 @if(Auth::user()->can('update'))
@@ -29,6 +26,10 @@
                     <a class="nav-link" href="/authorize">Authorize Users</a>
                 </li>
                 @endif
+            @endif
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('logout') }}"> Logout </a>
+                </li>
             @else
                 <li class="nav-item">
                     <a class="nav-link" href="/login">Login</a>
