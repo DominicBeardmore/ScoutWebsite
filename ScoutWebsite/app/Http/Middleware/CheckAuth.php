@@ -21,7 +21,7 @@ class CheckAuth
 
         //TODO REDIRECT
         if ($userAuth == 0) {
-            echo "Yo, you're not authorized!!!!!!!";
+            return redirect('403');
             exit;
         }
         return $next($request);
