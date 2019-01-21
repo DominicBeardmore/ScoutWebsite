@@ -17,6 +17,7 @@ Route::group(['middleware' => ['auth','isAuthorized']], function () {
     Route::resource('posts', 'PostsController');
     Route::resource('authorize', 'UserManagmentController');
     Route::resource('timeline', 'EventsController');
+    Route::get('gallery/{id}', 'PostsController@show');
 });
 
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');

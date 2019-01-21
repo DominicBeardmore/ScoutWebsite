@@ -9,14 +9,12 @@ What we've done recently
 
 @foreach ($posts as $post)
     <!-- Blog Post -->
-    <div class="col-sm-2">
-    </div>
     <div class="card mb-4">
         <img class="card-img-top" src="{!!$post['post_images'][0]['image_path']!!}" alt="NO IMAGE">
         <div class="card-body">
             <h2 class="card-title">{{$post['post_title']}}</h2>
             <p class="card-text">{{$post['post_content']}}</p>
-            <a href="#" class="btn btn-primary">Read More &rarr;</a>
+            <a href="{{ url('gallery/'.$post['post_id']) }}" class="btn btn-primary">Read More &rarr;</a>
         </div>
         <div class="card-footer text-muted">
             {{$post['post_date']}}
