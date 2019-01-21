@@ -95,9 +95,21 @@ class PostsController extends Controller
      * @param  \App\Posts  $posts
      * @return \Illuminate\Http\Response
      */
-    public function show(Posts $posts)
+    public function show($id)
     {
-        echo($posts);
+        $post = Posts::where('post_id', $id)->first();
+        $getImages = Images::where('post_id', $id)->get();
+
+        foreach ($getImages as $image) {
+            $image->image_path = Storage::temporaryUrl(
+                $image->image_path, now()->addMinutes(5)
+            );
+        }
+
+        return view('gallery', [
+            'title' => $post->post_title,
+            'images' => $getImages
+            ]);
     }
 
     /**
