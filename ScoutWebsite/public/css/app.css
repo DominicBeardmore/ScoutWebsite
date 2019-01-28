@@ -1,11 +1,22 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);/*!
+/* @import url(https://fonts.googleapis.com/css?family=Nunito); */
+/*!
  * Bootstrap v4.1.3 (https://getbootstrap.com/)
  * Copyright 2011-2018 The Bootstrap Authors
  * Copyright 2011-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
+@font-face {
+    font-family: Nunito;
+    src: url('../font/nunito-sans/NunitoSans-Regular.ttf');
+}
+
+.bg-scout-purple{
+  background-color: #7413DC !important;
+}
+
 :root {
+  --scout-purple: #7413DC;
   --blue: #3490dc;
   --indigo: #6574cd;
   --purple: #9561e2;
@@ -10471,4 +10482,3 @@ a.text-dark:focus {
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
-

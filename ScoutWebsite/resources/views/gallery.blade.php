@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row justify-content-center d-flex">
             @foreach ($images as $image)
-                <div class="card mb-4">
+                <div class="card mb-4 rounded">
                     <img class="card-img-top" src="{!!$image->image_path!!}" alt="OPPS something isn't quite right">
                 </div>
             @endforeach
