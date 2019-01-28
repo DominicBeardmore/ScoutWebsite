@@ -6,16 +6,16 @@ We are the 2nd Southwark
 
 @section('content')
 <div class="container">
-    <div class="row">
-        <div class="col-md-8 col-sm-12">
-            <div class="card" style="margin-bottom: 20">
+    <div class="row" style="margin-bottom: 100">
+        <div class="col-md-8 col-sm-12 d-flex flex-column justify-content-between">
+            <div class="card">
                 <div class="card-header">When we meet!</div>
                 <div class="card-body">
                     <h5 class="card-title">Primary card title</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
             </div>
-            <div class="card" style="margin-bottom: 20">
+            <div class="card">
                 <div class="card-header">Where we meet!</div>
                 <div class="card-body">
                     <p class="card-text">Kingswood House on the Kingswood Estate</p>
@@ -24,7 +24,7 @@ We are the 2nd Southwark
                     </div>
                 </div>
             </div>
-            <div class="card" style="margin-bottom: 20">
+            <div class="card">
                 <div class="card-header">When we meet!</div>
                 <div class="card-body">
                     <h5 class="card-title">Primary card title</h5>
@@ -32,20 +32,19 @@ We are the 2nd Southwark
                 </div>
             </div>
         </div>
-        <div class="col-md-4  col-sm-12">
-                <div class="card" style="margin-bottom: 20">
-                    <div class="card-header text-center">THE TEAM</div>
-                </div>
-            <div class="card" style="margin-bottom: 20">
-                <div class="card-body">
+        <div class="col-md-4 col-sm-12 d-flex flex-column justify-content-between">
+            <div class="card">
+                <div class="card-header text-center">THE LEADERS</div>
+            </div>
+            <div class="card">
                 <img src="https://pbs.twimg.com/profile_images/1010979991897759746/70VaGEhw_400x400.jpg" class="card-img-top">
-
+                <div class="card-body">
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
             </div>
-            <div class="card" style="margin-bottom: 20">
+            <div class="card">
+                <img src="https://pbs.twimg.com/profile_images/1010979991897759746/70VaGEhw_400x400.jpg" class="card-img-top">
                 <div class="card-body">
-                    <img src="https://pbs.twimg.com/profile_images/1010979991897759746/70VaGEhw_400x400.jpg" class="card-img-top">
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
             </div>

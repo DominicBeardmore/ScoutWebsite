@@ -17,40 +17,44 @@
         </section>
     </div>
 
-    <body>
-        <div class="container col-12">
-            <div class="row d-flex justify-content-around">
-                <div class="card-sm col-3 border rounded">
-                <img class="img-fluid border-bottom" src="{{url('images/Scouts_Logo_Stack_Purple.jpg')}}" alt="">
+    <div class="container">
+        <div class="row d-flex justify-content-around">
+            <div class="col-md-4 col-sm-10 mb-4">
+                <div class="card border">
+                <img class="card-img-top" src="{{url('images/boy-and-girl-cubs-laughing.jpg')}}" alt="">
                     <div class="card-body d-flex justify-content-center">
                         <a href="posts">
-                            <button class="btn-lg btn-primary rounded">Gallery</button>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="card-sm col-3 border rounded">
-                    <img class="img-fluid border-bottom" src="{{url('images/Scouts_Logo_Stack_Purple.jpg')}}" alt="">
-                    <div class="card-body d-flex justify-content-center">
-                        <a href="about">
-                            <button class="btn-lg btn-primary rounded">About Us</button>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="card-sm col-3 border rounded">
-                    <img class="img-fluid border-bottom" src="{{url('images/Scouts_Logo_Stack_Purple.jpg')}}" alt="">
-                    <div class="card-body d-flex justify-content-center">
-                        <a href="timeline">
-                            <button class="btn-lg btn-primary rounded">Timeline</button>
+                            <button class="btn-md btn-primary rounded">Photos</button>
                         </a>
                     </div>
                 </div>
             </div>
-            @if (Auth::user() && !Auth::user()->can('authorized'))
-                @include('adminPages.notAuthModal')
-            @endif
+
+            <div class="col-md-4 col-sm-10 mb-4">
+                <div class="card border">
+                    <img class="card-img-top" src="{{url('images/two-cubs-leaping-into-water-jpg.jpg')}}" alt="">
+                    <div class="card-body d-flex justify-content-center">
+                        <a href="about">
+                            <button class="btn-md btn-primary rounded">About Us</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-10 mb-4">
+                <div class="card border">
+                    <img class="card-img-top" src="{{url('images/cubs-crate-stacking-jpg.jpg')}}" alt="">
+                    <div class="card-body d-flex justify-content-center">
+                        <a href="timeline">
+                            <button class="btn-md btn-primary rounded">Events</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-    </body>
+        @if (Auth::user() && !Auth::user()->can('authorized'))
+            @include('adminPages.notAuthModal')
+        @endif
+    </div>
 </div>
 @endsection
